@@ -1,26 +1,22 @@
-function calcularValor(){
-    let homem,mulher,crianca,carne,cerveja,refri,valorCarne,valorCerveja,valorRefrigerante,valorTotal
-    homem = parseFloat(frmChurrasco.txtHomem.value.replace(",","."))
-    mulher = parseFloat(frmChurrasco.txtMulher.value.replace(",","."))
-    crianca = parseFloat(frmChurrasco.txtCrianca.value.replace(",","."))
-    carne = parseFloat(frmChurrasco.txtCarne.value.replace(",","."))
-    cerveja = parseFloat(frmChurrasco.txtCerveja.value.replace(",","."))
-    refri = parseFloat(frmChurrasco.txtRefrigerante.value.replace(",","."))
-    //RESULTADO DA QUANTIDADE DE CARNE
-    valorCarne = (homem * carne *30) / 100
-    frmChurrasco.txtResultadoCarne.value = valorCarne.toFixed(2)
 
-    //RESULTADO DA QUANTIDADE DE CERVEJA
-    valorCerveja = (mulher * cerveja *4)
-    frmChurrasco.txtResultadoCerveja.value = valorCerveja.toFixed(2)
-
-    //RESULTADO DA QUANTIDADE DE REFRIGERANTE
-    valorRefrigerante = (crianca * refri *2)
-    frmChurrasco.txtResultadoRefrigerante.value = valorRefrigerante.toFixed(2)
-
-    //RESULTADO TOTAL
-    valorTotal = (valorCarne + valorCerveja + valorRefrigerante)
-    frmChurrasco.txtResultadoTotal.value = valorTotal.toFixed(2)
-
+function CalcularPreco(){
+    //seta as variaveis
+    let Homen, Mulher, Crianca, KgCarne, LatadeCerveja, LatadeRefrigerante, CalcularValor, Carne, Cerveja, Refrigerante
     
-}
+    Homen = parseFloat(frmChurrascoCalculo.txtHomen.value.replace(",","."))
+    Mulher = parseFloat(frmChurrascoCalculo.txtMulher.value.replace(",","."))
+    Crianca = parseFloat(frmChurrascoCalculo.txtCriança.value.replace(",","."))
+    KgCarne = parseFloat(frmChurrascoCalculo.txtKgCarne.value.replace(",","."))
+    LatadeCerveja = parseFloat(frmChurrascoCalculo.txtLatadeCerveja.value.replace(",","."))
+    LatadeRefrigerante = parseFloat(frmChurrascoCalculo.txtLatadeRefrigerante.value.replace(",","."))
+    Carne = ((KgCarne * 30) / 100) * Homen + ((KgCarne * 30) / 100) * Mulher + ((KgCarne * 10) / 100) * Crianca
+    Cerveja =((LatadeCerveja * 12) * Homen) + ((LatadeCerveja * 4) * Mulher)
+    Refrigerante =((LatadeRefrigerante * 4) * Mulher) + ((LatadeRefrigerante * 4) * Crianca)
+    CalcularValor =((KgCarne * 30) / 100) * Homen + ((KgCarne * 30) / 100) * Mulher + ((KgCarne * 10) / 100) * Crianca + ((LatadeCerveja * 12) * Homen) + ((LatadeCerveja * 4) * Mulher) + ((LatadeRefrigerante * 4) * Mulher) + ((LatadeRefrigerante * 4) * Crianca)
+    
+    //exibe os resultados
+    frmChurrascoCalculo.txtTotalCarne.value=Carne.toFixed(2)
+    frmChurrascoCalculo.txtTotalCerveja.value=Cerveja.toFixed(2)
+    frmChurrascoCalculo.txtTotalRefrigerante.value=Refrigerante.toFixed(2)
+    frmChurrascoCalculo.txtResultado.value=CalcularValor.toFixed(2)
+ }
